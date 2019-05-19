@@ -42,6 +42,7 @@ public class ActivityRestAPI {
 	@GetMapping(path = { "/activities/{aId}" }, produces = { "application/json", "application/xml" })
 	public ResponseEntity<Object> findByPK(@PathVariable(value = "aId") String temp) {
 		System.out.println("method21() id=" + temp);
+		System.out.println("testttttttttt");
 //		成功：200 (OK)、message body包含1個resource的資料
 //		失敗(resource不存在)：404 (Not Found)
 		try {
