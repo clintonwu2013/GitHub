@@ -146,6 +146,7 @@ $( document ).ready(function() {
 					        
 					
 					$( "#content" ).html(txt)
+<<<<<<< HEAD
 					
 					
 			},
@@ -336,6 +337,267 @@ $( "#dialog2" ).dialog({
 		<button>確認違規並送出</button> 
 		<button>沒有違規</button>
   </form>
+=======
+					 
+					
+			},
+			error: function(){
+				alert("ajax failed")
+			}	
+		})
+		
+		
+	})
+	
+	
+	
+	$( ".buttonLeft" ).on( "click", function() {
+    	var aId = $(this).html();
+//     	var updateActivity = $(this).val();
+    	
+    	console.log( $(this).val())
+ 		console.log(aId);
+    	
+ 		var path = "/Final/showImg/"+aId;
+ 		console.log(path)
+ 		$("#img").attr("src",path);
+ 		
+ 		
+ 		$.ajax({
+			url: "/Final/activities/"+aId,
+			type: "Get",
+			success: function(data){
+					
+					console.log(data);
+					var begin = taskDate(new Date(data.beginTime));
+					var end = taskDate(new Date(data.endTime));
+					var attendLimitTime = taskDate(new Date(data.attendLimitTime));
+					txt=
+						"<b>發起人:</b>  " +data.email +"<br><br>"+
+						"<b>活動編號:</b> "+ data.aid+"<br>"+
+					    "<b>活動名稱:</b>  "+data.aname+"<br>"+
+					    "<b>活動類型:</b> "+ data.atype+"<br>"+
+					    "<b>活動時間:</b> "+begin+" ~ "+end+"<br>"+
+					    "<b>活動地點:</b> "+data.address+"<br>"+
+					    "<b>活動內容:</b> "+data.acontent+"<br><br>"+
+					    		   
+// 					    "<b>活動費用:</b> "+data.cost+"<br>"+
+					    "<b>活動按讚數:</b> "+data.good+"<br>"+
+					    "<b>活動參加人數:</b> "+data.accessPeople+"<br>"+
+					    "<b>活動人數限制:</b> "+data.peopleUplimit+"<br>"+
+					    "<b>活動報名截止:</b> "+attendLimitTime+"<br><br>"+
+					    "<b>審核狀態:</b> "+data.permission+"<br>"+
+// 					    "<button class='buttonRight' value='${data.aid}'>通過</button>"+
+// 					    '<button class="buttonRight" value="${data.aid}">不通過</button><br>'+
+					    "<b>活動狀態:</b> "+data.status 
+					
+					    
+					  
+					
+					$( "#content" ).html(txt)
+					
+			},
+			error: function(){
+				console.log("ajax failed")
+			}	
+		})
+		
+		
+        $( "#dialog" ).dialog( "open" );
+        
+       
+    });
+	
+	
+	$( ".buttonLeft2" ).on( "click", function() {
+    	var messageId = $(this).html();
+ 		alert(messageId);
+//  		var path = "/Final/showMemberImg/"+messageId;
+//  		alert(path)
+ 		$.ajax({
+			url: "/Final/reports/"+messageId,
+			type: "Get",
+			success: function(data){
+				console.log(data);
+				var messageTime = taskDate(new Date(data.messageTime));
+					txt = 
+						"<b>被檢舉人帳號:</b>  "+data.email+ "<br>"+
+						"<b>被檢舉人姓名:</b>  "+data.memberName+"<br><br>"+
+						"<b>留言編號:</b>  "+data.messageId+"<br>"+
+						"<b>留言時間:</b>  "+messageTime+"<br>"+
+						"<b>被檢舉人留言:</b><br>  "+data.message+"<br>";
+						
+					console.log(data)	
+					$( "#content2" ).html(txt)
+					$( "#dialogActivityId" ).val(data.activityId);
+					$( "#dialogActivityName" ).val(data.activityName);
+// 					$( "#dialogEmail" ).val(data.email);
+					
+					$( "#dialogEmail" ).val(data.email);
+					$( "#dialogName" ).val(data.memberName);
+					$( "#dialogMessageNo" ).val(data.messageId);
+					$( "#dialogMessageTime" ).val(data.messageTime);
+					$( "#dialogMessageContent" ).val(data.message);
+					
+
+					var path = "/Final/"+data.email+"/showMemberImg";
+					alert(path);
+					$("#img2").attr("src",path);
+					
+					
+			},
+			error: function(){
+				alert("ajax failed")
+			}	
+		})
+ 		
+		
+        $( "#dialog2" ).dialog( "open" );
+        
+       
+    });
+	
+	
+	$( ".dialogButton" ).on( "click", function() {
+    	var violateType = $(this).html();
+    	var memberEmail = $("#dialogEmail").val();
+    	var memberName = $("#dialogName").val();
+    	var messageNo = $("#dialogMessageNo").val();
+    	var messageTime = $("#dialogMessageTime").val();
+    	var messageContent = $("#dialogMessageContent").val();
+    	var response = $("#dialogResponse").val();
+    	var activityId = $("#dialogActivityId").val();
+    	var activityName = $("#dialogActivityName").val();
+    	//alert("aid="+activityId)
+    	//alert("aname="+activityName)
+//  		alert(violateType);
+// 		alert(memberEmail);
+// 		alert(memberName );
+// 		alert(messageNo);
+// 		alert(messageTime);
+// 		alert(messageContent);
+// 		alert(response);
+		var Json = { 
+			"activityId": activityId,
+			"activityName": activityName,
+			"violateType": violateType, 
+			"memberEmail": memberEmail,
+			"memberName": memberName,
+			"messageNo": messageNo,
+			"messageTime": messageTime,
+			"messageContent": messageContent,
+			"response": response
+			};
+		
+		$.ajax({
+			url: "/Final/reportsUpdate",
+			type: "Post",
+			dataType: "json",
+			data: Json,
+			success: function(data){
+				alert("ok")	
+					
+			},
+			error: function(){
+				alert("ajax failed")
+			}	
+		})
+		
+ 		$( "#dialog2" ).dialog( "open" );
+        
+       
+    });
+});
+
+
+
+$( function() {
+    $( "#dialog" ).dialog({
+    	
+    	maxWidth:6000,
+        maxHeight: 5000,
+        width: 430,
+        height: 690,
+        position: { my: "center", at: "left+290px top+300px ", of: window  } ,
+      autoOpen: false,
+      show: {
+        effect: "blind",
+        duration: 10
+      },
+      hide: {
+        effect: "blind",
+        duration: 10
+      }
+    });
+    
+$( "#dialog2" ).dialog({
+    	
+    	maxWidth:6000,
+        maxHeight: 5000,
+        width: 430,
+        height: 600,
+        position: { my: "center", at: "left+290px top+300px ", of: window  } ,
+      autoOpen: false,
+      show: {
+        effect: "blind",
+        duration: 10
+      },
+      hide: {
+        effect: "blind",
+        duration: 10
+      }
+    });
+ 
+    
+  } );
+
+
+		
+</script>
+<body style="font-family: Microsoft JhengHei">
+
+<div id="body">
+
+
+<div id="left" >
+<ul>
+<li><a id="link1" href="<c:url value="/findMembers"></c:url>">管理網站會員</a>
+<li><a id="link2" href="<c:url value="/findUnreviewed"></c:url>">管理未審核的活動</a>
+<li><a id="link3" href="<c:url value="/findReports"></c:url>">管理檢舉</a>
+</ul>
+
+</div>
+
+
+
+
+
+<div id="dialog" title="活動詳細資料" >
+  <img id="img">
+  <div id="content"></div>
+</div>
+
+<div id="dialog2" title="被檢舉人詳細資料" >
+  <img id="img2">
+  <div id="content2"></div>
+  <br>
+  <b>回覆被檢舉人:</b>
+  <div id="dialogform">
+  
+		<textarea name="response" id="dialogResponse" rows="5" cols="30"></textarea>  
+		<input type="hidden" name="activityId" id="dialogActivityId"  >
+		<input type="hidden" name="activityName" id="dialogActivityName"  >
+		<input type="hidden" name="email" id="dialogEmail"  >
+		<input type="hidden" name="name" id="dialogName"  >
+		<input type="hidden" name="messageNo" id="dialogMessageNo"  >
+		<input type="hidden" name="messageTime" id="dialogMessageTime"  >
+		<input type="hidden" name="messageContent" id="dialogMessageContent"  ></button>
+		<button class="dialogButton">確認違規並送出</button>
+		<button class="dialogButton">沒有違規</button>
+		
+		
+
+>>>>>>> branch 'master' of https://github.com/clintonwu2013/Projects.git
   </div>
   
 </div>

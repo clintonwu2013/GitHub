@@ -45,4 +45,12 @@ public class memberDAO {
 		Member member = session.get(Member.class, email);
 		member.setPermission(permission);
 	}
+
+	public void updateVcount(String memberEmail, Integer vCount) {
+		Session session = sessionFactory.getCurrentSession();
+		Member member = session.get(Member.class, memberEmail);
+		member.setVcount(vCount);;
+		
+	}
+
 }
