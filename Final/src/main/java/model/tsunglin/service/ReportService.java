@@ -1,5 +1,7 @@
 package model.tsunglin.service;
 
+
+
 import java.util.Date;
 import java.util.List;
 
@@ -38,5 +40,7 @@ public class ReportService {
 		Integer vCount = memberDAO.findByPK(memberEmail).getVcount();
 
 		memberDAO.updateVcount(memberEmail, vCount+1);
+
+
 	}
 }
