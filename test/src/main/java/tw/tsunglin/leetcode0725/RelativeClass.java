@@ -33,6 +33,13 @@ public class RelativeClass {
         return result;
     }
 	public static void main(String[] args) {
+		RelativeClass test = new RelativeClass();
+		int[] nums = {5,4,3,2,1};
+		String[] ans = test.findRelativeRanks(nums);
+		
+		for(int i=0; i<ans.length; i++) {
+			System.out.println(ans[i]);
+		}
 		
 	}
 }
