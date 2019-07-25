@@ -25,7 +25,7 @@ public class RelativeClass {
         		}else if(place==3) {
         			result[hash[i]-1]="bronze";
         		}else {
-        			result[hash[i]-1]=String.valueOf(place);
+        			 result[hash[i]-1]=String.valueOf(place);
         		}
         		place++;
         	}
