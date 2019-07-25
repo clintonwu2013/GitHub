@@ -1,0 +1,39 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<zk>
+
+	<window title="Search" width="600px" border="normal"
+		viewModel="@id('vm') @init('tw.tsunglin.bean.SearchViewModel')">
+		<hbox>
+			Keyword:
+			<textbox value="@save(vm.keyword)" />
+			<button label="Search" onClick="@command('search')" />
+		</hbox>
+		<listbox height="160px" model="@load(vm.carList)" selectedItem="@save(vm.selectedCar)"
+			emptyMessage="No car found in the result">
+			<listhead>
+				<listheader label="Model" />
+				<listheader label="Make" />
+				<listheader label="Price" width="20%" />
+			</listhead>
+			<template name="model">
+				<listitem>
+					<listcell label="@init(each.model)"></listcell>
+					<listcell label="@init(each.make)"></listcell>
+					<listcell>
+						$<label value="@init(each.price)" />
+					</listcell>
+				</listitem>
+			</template>
+		</listbox>
+
+		<hbox style="margin-top:20px">
+			<image width="250px" src="@load(vm.selectedCar.preview)" />
+			<vbox>
+				<label value="@load(vm.selectedCar.model)" />
+				<label value="@load(vm.selectedCar.make)" />
+				<label value="@load(vm.selectedCar.price)" />
+				<label value="@load(vm.selectedCar.description)" />
+			</vbox>
+		</hbox>
+	</window>
+</zk>

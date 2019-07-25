@@ -1,0 +1,59 @@
+<zk>
+	
+	
+
+	<window title="Search" width="600px" border="normal"
+		apply="tw.tsunglin.controller.SearchController">
+
+		<hbox align="center">
+			Keyword:
+			<textbox id="keywordBox" />
+			<button id="searchButton" label="Search" />
+		</hbox>
+		<listbox id="carListbox" height="160px"
+			emptyMessage="No car found in the result">
+			<listhead>
+				<listheader label="Model" />
+				<listheader label="Make" />
+				<listheader label="Price" width="20%" />
+			</listhead>
+			<template name="model">
+        <listitem>
+            <listcell label="${each.model}"></listcell>
+            <listcell label="${each.make}"></listcell>
+            <listcell>$<label value="${each.price}" /></listcell>
+        </listitem>
+    </template>
+		</listbox>
+
+		<hlayout style="margin-top:20px" width="100%">
+			<image id="previewImage" width="250px" />
+			<vlayout hflex="1">
+				<label id="modelLabel" />
+				<label id="makeLabel" />
+				<label id="priceLabel" />
+				<label id="descriptionLabel" />
+			</vlayout>
+		</hlayout>
+
+
+	</window>
+	
+	
+<!--     <borderlayout hflex="1" vflex="1"> -->
+<!--         <north height="100px" border="none" > -->
+<!--             <label style="font-size:50px">North for header</label> -->
+<!--         </north> -->
+<!--         <west width="260px" border="none" collapsible="true" -->
+<!--               splittable="true" minsize="300"> -->
+<!--             <label style="font-size:50px">West for sidebar</label> -->
+<!--         </west> -->
+<!--         <center id="mainContent" autoscroll="true"> -->
+<!--             <label style="font-size:50px">Center for content</label> -->
+<!--         </center> -->
+<!--         <south height="50px" border="none"> -->
+<!--             <label style="font-size:50px">South for footer</label> -->
+<!--         </south> -->
+<!--     </borderlayout> -->
+
+</zk>
