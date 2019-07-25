@@ -91,6 +91,10 @@
 </style>
 <script>
 window.onload=function(){
+	
+	for (let node of document.body.childNodes) {
+		  alert(node); // shows all nodes from the collection
+		}
     document.getElementById("email").addEventListener("click",function(){
         this.placeholder="";
     })

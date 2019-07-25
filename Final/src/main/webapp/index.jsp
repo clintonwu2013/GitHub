@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>歡迎光臨動物之家</title>
+<title>期末專題</title>
 </head>
 <body>
 <jsp:include page="head.jsp"></jsp:include>
