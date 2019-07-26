@@ -1,8 +1,7 @@
 package tw.tsunglin.leetcode0726;
 
 import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
+
 
 public class KdiffPairsInArray {
 	public int findPairs(int[] nums, int k) {
