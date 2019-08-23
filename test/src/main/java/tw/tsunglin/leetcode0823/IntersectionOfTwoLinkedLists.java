@@ -3,6 +3,8 @@ package tw.tsunglin.leetcode0823;
 import java.util.HashSet;
 import java.util.Set;
 
+
+
 import tw.tsunglin.leetcode06242019.ListNode;
 
 public class IntersectionOfTwoLinkedLists {
@@ -25,5 +27,8 @@ public class IntersectionOfTwoLinkedLists {
 	public static void main(String[] args) {
 
 	}
+	
+	
+	
 
 }
