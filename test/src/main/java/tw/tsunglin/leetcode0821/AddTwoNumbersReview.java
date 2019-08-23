@@ -10,10 +10,10 @@ public class AddTwoNumbersReview {
 			int x = (l1 != null)? l1.val:0;
 			int y = (l2 != null)? l2.val:0;
 			
-//			int sum = x+y+carry;
+			int sum = x+y+carry;
 			carry = (x+y+carry)/10;
 			
-			curr.next = new ListNode(carry);
+			curr.next = new ListNode(sum%10);
 			curr = curr.next;
 			
 			if(l1!=null) {
