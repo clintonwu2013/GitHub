@@ -25,7 +25,8 @@ public class QueueLinkedListImpl {
 	public ListNode pop() {
 		if(isEmpty()) {
 			throw new IllegalStateException("queue is empty!!!");
-		}if(frontNode == rearNode){
+		}
+		if(frontNode == rearNode){
 			ListNode record = frontNode;
 			frontNode = null;
 			rearNode = null;
