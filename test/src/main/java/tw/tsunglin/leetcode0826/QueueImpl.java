@@ -2,7 +2,7 @@ package tw.tsunglin.leetcode0826;
 
 import java.util.Arrays;
 
-public class Queue<T> {
+public class QueueImpl<T> {
 
     private int front;
     private int rear;
@@ -10,7 +10,7 @@ public class Queue<T> {
     T[] queue;
 
     @SuppressWarnings("unchecked")
-	public Queue(int inSize) {
+	public QueueImpl(int inSize) {
         size = inSize;
         queue = (T[]) new Object[size];
         front = -1;
@@ -63,7 +63,7 @@ public class Queue<T> {
     
     @SuppressWarnings("unchecked")
 	public static <T> void main(String[] args) {
-        Queue<Integer> newQueue = new Queue<Integer>(10);
+        QueueImpl<Integer> newQueue = new QueueImpl<Integer>(10);
         newQueue.enQueue(10);
         newQueue.enQueue(20);
         newQueue.enQueue(30);

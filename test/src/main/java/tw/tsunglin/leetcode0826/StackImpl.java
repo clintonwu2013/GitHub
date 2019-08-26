@@ -2,7 +2,7 @@ package tw.tsunglin.leetcode0826;
 
 import tw.tsunglin.leetcode06242019.ListNode;
 
-public class Stack {
+public class StackImpl {
 	ListNode currNode = null;
 	
 	public boolean isEmpty() {
