@@ -120,22 +120,19 @@ public class BinarySearchTreeReview {
 	}
 	
 	public Node getSuccessor(Node deleleNode){
-		Node successsor =null;
+		Node successor =null;
 		Node successsorParent =null;
 		Node current = deleleNode.right;
-		while(current!=null){
-			successsorParent = successsor;
-			successsor = current;
-			current = current.left;
+		while(current != null) {
+			successor = current;
+			successsorParent = successor;
+			successor = current.left;
 		}
-		//check if successor has the right child, it cannot have left child for sure
-		// if it does have the right child, add it to the left of successorParent.
-//		successsorParent
-		if(successsor!=deleleNode.right){
-			successsorParent.left = successsor.right;
-			successsor.right = deleleNode.right;
+		if(successor!=deleleNode.right){
+			successsorParent.left = successor.right;
+			successor.right = deleleNode.right;
 		}
-		return successsor;
+		return successor;
 	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
