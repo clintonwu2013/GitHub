@@ -4,11 +4,13 @@ public class ArraySplit
 {
     public static void main( String[] args )
     {
-        String str= "a,b,c,d,e,f,g";
-        String[] array = str.split(",");
+//        String str= "a,b,c,d,e,f,g";
+//        String[] array = str.split(",");
+//        
+//        for(int i=0;i<array.length;i++) {
+//        	System.out.println(array[i]+"1");
+//        }
         
-        for(int i=0;i<array.length;i++) {
-        	System.out.println(array[i]+"1");
-        }
+        System.out.println(1234567%7);
     }
 }
