@@ -9,7 +9,7 @@ public class Permutations {
 		List<Integer> out = new ArrayList<Integer>();
 		int[] visited = new int[nums.length];
 		permuteDFS(nums,res, out, 0, visited);
-		return null;
+		return res;
 	}
 
 	private void permuteDFS(int[] nums, List<List<Integer>> res, List<Integer> out, int start, int[] visited) {
