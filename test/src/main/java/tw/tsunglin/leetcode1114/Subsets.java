@@ -20,21 +20,7 @@ public class Subsets {
 		    }
 		    return lists;
     }
-	private void DFS(List<List<Integer>> res, List<Integer> out, int[] nums, int start) {
-		if(start == nums.length) {
-			res.add(new ArrayList(out));
-			return;
-		}
-		
-		for(int i=start; i< nums.length; i++) {
-			out.add(nums[i]);
-			DFS(res, out, nums, i+1);
-			
-			out.remove(out.size()-1);
-			DFS(res, out, nums, i+1);
-		}
-		
-	}
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
